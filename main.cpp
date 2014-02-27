@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+
 	LinkedList<int> *lista1 = new LinkedList<int>();
 
 	lista1->addFirst(10);
@@ -58,7 +59,16 @@ int main()
 
 	lista3->reverse();
 	lista3->print();
+	lista3->addFirst(0);
+	lista3->print();
+	lista3->shift(2);
+	lista3->print();
 	//cout << lista3;
+
+	lista4->deleteFirst();
+	lista4->print();
+	lista4->shift(1);
+	lista4->print();
 
 	delete lista1;
 	delete lista2;
