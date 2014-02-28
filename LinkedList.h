@@ -11,6 +11,7 @@ private:
 public:
 	int length;
     LinkedList();
+    //LinkedList(LinkedList<T> list);
     ~LinkedList();
     bool isEmpty();
     void addFirst(T d);
@@ -29,16 +30,27 @@ public:
     void print();
     void shift(int shift);
 };
+/*
+template <typename T>
+LinkedList<T>::LinkedList(LinkedList<T> &list){
+
+	for (int i = 0; i < list.length; ++i)
+	{
+	}
+	node<T> = new node(data);
+}*/
 
 template <typename T>
 void LinkedList<T>::shift(int shift){
 	//Checking early return cases for the shift int.
 	if (!length || length == 1)
 		return;
-	if (shift >= length || shift == 0)
+	if (shift == 0)
 		return;
-	else if (shift == -1)
-		shift = 1;
+	else if (shift >= length)
+		shift = shift % length;
+	else if (shift < 0)
+		shift = length + (shift % length);
 	else if (shift == 1 && length == 2){
 		change(0,1);
 		return;
