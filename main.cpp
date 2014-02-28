@@ -61,7 +61,7 @@ int main()
 	lista3->print();
 	lista3->addFirst(0);
 	lista3->print();
-	lista3->shift(2);
+	lista3->shift(5);
 	lista3->print();
 	//cout << lista3;
 
