@@ -11,7 +11,7 @@ private:
 public:
 	int length;
     LinkedList();
-    //LinkedList(LinkedList<T> list);
+    //LinkedList(const LinkedList<T> list);
     ~LinkedList();
     bool isEmpty();
     void addFirst(T d);
@@ -29,15 +29,20 @@ public:
     bool operator==(LinkedList<T> &list);
     void print();
     void shift(int shift);
+    //void LinkedList<T>::operator+=(T d);
+    //void LinkedList<T>::operator+=(const LinkedList<T> list);
 };
 /*
 template <typename T>
-LinkedList<T>::LinkedList(LinkedList<T> &list){
-
-	for (int i = 0; i < list.length; ++i)
-	{
+LinkedList<T>::LinkedList(const LinkedList<T> list){
+	head = NULL;
+	node<T> *aux = head;
+	for (int i = 0; i < list.length; ++i){
+		node<T> *aux2 = new node(aux->getData());
+		aux = aux->getNext();
+		aux2 = aux2
 	}
-	node<T> = new node(data);
+	
 }*/
 
 template <typename T>
@@ -268,13 +273,13 @@ void LinkedList<T>::print(){
 /*
 template <typename T>
 ostream& operator<<(ostream& os, LinkedList<T>& list){
-	//os << "[ ";
+	os << "[ ";
 	node<T> *aux = list.head;
 	while (aux != NULL){
 		os << aux->getData() << " ";
 		aux = aux->getNext();
 	}
-	//os << " ]" << endl; //<< "FIN DE LA LISTA" << endl;
+	os << " ]" << endl; //<< "FIN DE LA LISTA" << endl;
 	return os;
 }*/
 
