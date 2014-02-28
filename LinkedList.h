@@ -311,7 +311,7 @@ bool LinkedList<T>::operator==(LinkedList<T> &list){
 	if (length != list.length)
 		return false;
 	else {
-		while (aux != NULL && aux2 != NULL){
+		for (int i = 0; i < length; ++i){
 			if (aux->getData() != aux2->getData())
 				return false;
 			aux = aux->getNext();
