@@ -27,7 +27,35 @@ public:
     //friend ostream& operator<<(ostream& os, LinkedList<T> &list);
     bool operator==(LinkedList<T> &list);
     void print();
+    void shift(int shift);
 };
+
+template <typename T>
+void LinkedList<T>::shift(int shift){
+	//Checking early return cases for the shift int.
+	if (!length || length == 1)
+		return;
+	if (shift >= length || shift == 0)
+		return;
+	else if (shift == -1)
+		shift = 1;
+	else if (shift == 1 && length == 2){
+		change(0,1);
+		return;
+	}
+	//Starting to assign variables and making shift.
+	node<T> *newHead = head, *newEnd = head, *end = head;
+	for (int i = 1; i < length; ++i){ //going through the whole list
+		if (i <= shift)
+			newHead = newHead->getNext();
+		if (i < shift)
+			newEnd = newEnd->getNext();
+		end = end->getNext();
+	}
+	newEnd->setNext(NULL);
+	end->setNext(head);
+	head = newHead;
+}
 
 template <typename T>
 LinkedList<T>::LinkedList(){
@@ -99,7 +127,7 @@ template <typename T>
 T LinkedList<T>::deleteFirst(){
 
 	if (this->isEmpty())
-		return NULL;
+		return 0;
 
 	T data = head->getData();
 	node<T> *aux = head;
