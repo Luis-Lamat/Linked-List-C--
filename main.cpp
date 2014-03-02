@@ -70,12 +70,12 @@ int main()
 	lista4->shift(1);
 	lista4->print();
 
-/*
-	LinkedList<int> lista5;
-	lista5.addFirst(4);
-	lista5.addFirst(5);
-	lista5.addFirst(6);
-	cout << lista5 << endl;*/
+
+	LinkedList<string> *lista5 = new LinkedList<string>(*lista2);
+	/*lista5->addFirst(4);
+	lista5->addFirst(5);
+	lista5->addFirst(6);*/
+	lista5->print();
 
 	delete lista1;
 	delete lista2;

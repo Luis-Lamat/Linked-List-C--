@@ -11,7 +11,7 @@ private:
 public:
 	int length;
     LinkedList();
-    //LinkedList(const LinkedList<T> list);
+    LinkedList(const LinkedList<T> &list);
     ~LinkedList();
     bool isEmpty();
     void addFirst(T d);
@@ -32,18 +32,25 @@ public:
     //void LinkedList<T>::operator+=(T d);
     //void LinkedList<T>::operator+=(const LinkedList<T> list);
 };
-/*
+
 template <typename T>
-LinkedList<T>::LinkedList(const LinkedList<T> list){
+LinkedList<T>::LinkedList(const LinkedList<T> &list){
+
 	head = NULL;
-	node<T> *aux = head;
-	for (int i = 0; i < list.length; ++i){
-		node<T> *aux2 = new node(aux->getData());
-		aux = aux->getNext();
-		aux2 = aux2
-	}
+	if (list.length == 0)
+		return;
 	
-}*/
+	node<T> *node_To_Copy = list.head, *aux = head;
+	for (int i = 0; i < list.length; ++i)
+	{
+		node<T> *copied_Node = new node<T>(node_To_Copy->getData());
+		if (i == 0) head = copied_Node;
+		if (i > 0) aux->setNext(copied_Node);
+		node_To_Copy = node_To_Copy->getNext();
+		aux = copied_Node;
+	}
+	length = list.length;
+}
 
 template <typename T>
 void LinkedList<T>::shift(int shift){
