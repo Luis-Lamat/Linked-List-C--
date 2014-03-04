@@ -29,9 +29,14 @@ public:
     bool operator==(LinkedList<T> &list);
     void print();
     void shift(int shift);
-    //void LinkedList<T>::operator+=(T d);
+    void operator+=(T d);
     //void LinkedList<T>::operator+=(const LinkedList<T> list);
 };
+
+template <typename T>
+void LinkedList<T>::operator+=(T d){
+	this->addLast(d);
+}
 
 template <typename T>
 LinkedList<T>::LinkedList(const LinkedList<T> &list){

@@ -12,6 +12,7 @@ int main()
 	lista1->addFirst(10);
 	lista1->addFirst(100);
 	lista1->addFirst(1000);
+	(*lista1) += 1;
 	lista1->print();
 	//cout << lista1;
 	cout << endl;
