@@ -30,8 +30,25 @@ public:
     void print();
     void shift(int shift);
     void operator+=(T d);
-    //void LinkedList<T>::operator+=(const LinkedList<T> list);
+    void operator+=(const LinkedList<T> &list);
 };
+
+template <typename T>
+void LinkedList<T>::operator+=(const LinkedList<T> &list){
+	
+	node<T> *aux = head;
+	if (this->isEmpty()){
+		LinkedList<T> *auxList = new LinkedList<T>(list);
+		head = auxList->head;
+		return;
+	}
+
+	while (aux->getNext()){
+		aux = aux->getNext();
+	}
+	aux->setNext(list.head);
+	length++;
+}
 
 template <typename T>
 void LinkedList<T>::operator+=(T d){

@@ -17,6 +17,12 @@ int main()
 	//cout << lista1;
 	cout << endl;
 
+	LinkedList<int> *lista6 = new LinkedList<int>();
+	lista6->addFirst(10000);
+	(*lista6)+= (*lista1);
+	lista6->print();
+
+
 	LinkedList<string> *lista2 = new LinkedList<string>();
 
 	lista2->addFirst("estas?");
