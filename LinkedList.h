@@ -30,6 +30,7 @@ public:
     void shift(int shift);
     void operator+=(T d);
     void operator+=(const LinkedList<T> &list);
+    void operator=(const LinkedList<T> &list);
     friend ostream& operator<<(ostream& os, LinkedList<T> &list){
 		node<T> *aux = list.head;
 		while (aux != NULL){
@@ -42,9 +43,31 @@ public:
 };
 
 template <typename T>
-void LinkedList<T>::operator+=(const LinkedList<T> &list){
+void LinkedList<T>::operator=(const LinkedList<T> &list){
+	this->deleteAll();
+
+	if (list.length == 0)
+		return;
 	
+	node<T> *node_To_Copy = list.head, *aux = head;
+	for (int i = 0; i < list.length; ++i)
+	{
+		node<T> *copied_Node = new node<T>(node_To_Copy->getData());
+		if (i == 0) head = copied_Node;
+		if (i > 0) aux->setNext(copied_Node);
+		node_To_Copy = node_To_Copy->getNext();
+		aux = copied_Node;
+	}
+	length = list.length;
+
+}
+
+
+template <typename T>
+void LinkedList<T>::operator+=(const LinkedList<T> &list){
+
 	node<T> *aux = list.head;
+	int k = 0;
 	while (aux != NULL)
 	{
 		addLast(aux->getData());
@@ -313,19 +336,6 @@ void LinkedList<T>::print(){
 	}
 	cout << endl<< "FIN DE LA LISTA"<<endl;
 }
-
-/*
-template <typename T>
-ostream& operator<<(ostream& os, LinkedList<T>& list){
-	os << "[ ";
-	node<T> *aux = list.head;
-	while (aux != NULL){
-		os << aux->getData() << " ";
-		aux = aux->getNext();
-	}
-	os << " ]" << endl; //<< "FIN DE LA LISTA" << endl;
-	return os;
-}*/
 
 template <typename T>
 void LinkedList<T>::reverse(){
