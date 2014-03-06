@@ -12,9 +12,17 @@ int main()
 	lista1->addFirst(10);
 	lista1->addFirst(100);
 	lista1->addFirst(1000);
+	(*lista1) += 1;
 	lista1->print();
 	//cout << lista1;
 	cout << endl;
+
+	LinkedList<int> *lista6 = new LinkedList<int>();
+	lista6->addFirst(10000);
+	lista6->addFirst(100000);
+	(*lista6)+= (*lista1);
+	lista6->print();
+
 
 	LinkedList<string> *lista2 = new LinkedList<string>();
 
