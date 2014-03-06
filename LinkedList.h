@@ -67,7 +67,6 @@ template <typename T>
 void LinkedList<T>::operator+=(const LinkedList<T> &list){
 
 	node<T> *aux = list.head;
-	int k = 0;
 	while (aux != NULL)
 	{
 		addLast(aux->getData());
