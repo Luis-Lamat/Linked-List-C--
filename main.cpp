@@ -19,6 +19,7 @@ int main()
 
 	LinkedList<int> *lista6 = new LinkedList<int>();
 	lista6->addFirst(10000);
+	lista6->addFirst(100000);
 	(*lista6)+= (*lista1);
 	lista6->print();
 

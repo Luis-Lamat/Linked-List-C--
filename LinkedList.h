@@ -25,18 +25,33 @@ public:
     int deleteAll();
     bool change(int index1, int index2);
     void reverse();
-    //friend ostream& operator<<(ostream& os, LinkedList<T> &list);
     bool operator==(LinkedList<T> &list);
     void print();
     void shift(int shift);
     void operator+=(T d);
     void operator+=(const LinkedList<T> &list);
+    friend ostream& operator<<(ostream& os, LinkedList<T> &list){
+		node<T> *aux = list.head;
+		while (aux != NULL){
+			os << aux->getData() << " ";
+			aux = aux->getNext();
+		}
+		os << endl << "FIN DE LA LISTA" << endl;
+		return os;
+	}
 };
 
 template <typename T>
 void LinkedList<T>::operator+=(const LinkedList<T> &list){
 	
-	node<T> *aux = head;
+	node<T> *aux = list.head;
+	while (aux != NULL)
+	{
+		addLast(aux->getData());
+		aux = aux->getNext();
+	}
+
+	/*
 	if (this->isEmpty()){
 		LinkedList<T> *auxList = new LinkedList<T>(list);
 		head = auxList->head;
@@ -47,7 +62,7 @@ void LinkedList<T>::operator+=(const LinkedList<T> &list){
 		aux = aux->getNext();
 	}
 	aux->setNext(list.head);
-	length++;
+	length++;*/
 }
 
 template <typename T>
